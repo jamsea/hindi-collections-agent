@@ -36,6 +36,8 @@ uv sync
 cp env.example .env   # then add your keys
 ```
 
+Your Deepgram key needs access to Flux TTS for the Hindi voice. If the bot connects but stays silent, check that first.
+
 ## Run it
 
 **In the browser**
