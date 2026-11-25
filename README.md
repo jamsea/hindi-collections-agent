@@ -115,6 +115,32 @@ wss://ap-south.api.pipecat.daily.co/ws/exotel?serviceHost=hindi-collections-agen
 
 Agents run, and their logs are stored, in the region you pick. Account and session records are stored in the US. If every record must stay in India, Pipecat Enterprise runs the same bot in your own Kubernetes cluster: https://docs.pipecat.ai/pipecat-cloud/enterprise/overview
 
+## Web console
+
+`client/` is a web page for talking to the deployed agent. It is the Console block from [Pipecat UI](https://ui.pipecat.ai), and GitHub Pages hosts it:
+
+https://jamsea.github.io/hindi-collections-agent/
+
+Paste a Pipecat Cloud public key (`pk_...`) into the box at the top and click Connect. Make a key in the Pipecat Cloud dashboard under Settings > API Keys > Public. When the bot asks for the loan number, say 4321.
+
+To share it, put the key in the link. The page fills the box for you:
+
+```
+https://jamsea.github.io/hindi-collections-agent/#key=pk_...
+```
+
+Anyone with that link can start calls on your account. Make one key per person, and revoke it when they are done.
+
+In a fork, turn on GitHub Pages (Settings > Pages > Source: GitHub Actions) and change `base` in `client/vite.config.ts` to your repo name. Add `?agent=<name>` to the link if your agent has another name.
+
+Run the page on your computer:
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
 ## Good to know
 
 - **The bot always speaks Hindi.** It understands Hindi, English, and a mix. To change the voice, pick another `flux-<name>-hi` voice from https://developers.deepgram.com/docs/flux-tts/voices, or swap the block for `SarvamTTSService`.
